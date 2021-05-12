@@ -2,7 +2,9 @@
 
 namespace NotificationChannels\NextSms;
 
+use NextSms\SDK\NextSms as NextSmsSDK;
 use Illuminate\Support\ServiceProvider;
+use NotificationChannels\NextSms\Exceptions\InvalidConfiguration;
 
 class NextSmsServiceProvider extends ServiceProvider
 {
@@ -11,30 +13,21 @@ class NextSmsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Bootstrap code here.
-
         /**
-         * Here's some example code we use for the pusher package.
-
-        $this->app->when(Channel::class)
-            ->needs(Pusher::class)
+         * Bootstrap the application services.
+         */
+        $this->app->when(NextSmsChannel::class)
+            ->needs(NextSmsSDK::class)
             ->give(function () {
-                $pusherConfig = config('broadcasting.connections.pusher');
-
-                return new Pusher(
-                    $pusherConfig['key'],
-                    $pusherConfig['secret'],
-                    $pusherConfig['app_id']
+                $userName = config('services.nextsms.username');
+                $key = config('services.nextsms.key');
+                if (is_null($userName) || is_null($key)) {
+                    throw InvalidConfiguration::configurationNotSet();
+                }
+                return new NextSmsSDK(
+                    $userName,
+                    $key
                 );
             });
-         */
-
-    }
-
-    /**
-     * Register the application services.
-     */
-    public function register()
-    {
     }
 }

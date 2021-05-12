@@ -2,14 +2,20 @@
 
 namespace NotificationChannels\NextSms;
 
-use NotificationChannels\NextSms\Exceptions\CouldNotSendNotification;
+use NextSms\SDK\NextSms as NextSmsSDK;
+use Exception;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\NextSms\Exceptions\CouldNotSendNotification;
 
 class NextSmsChannel
 {
-    public function __construct()
+    /** @var NextSmsSDK */
+    protected $nextsms;
+
+    /** @param NextSmsSDK $nextsms */
+    public function __construct(NextSmsSDK $nextsms)
     {
-        // Initialisation code here
+        $this->nextsms = $nextsms;
     }
 
     /**
@@ -17,15 +23,26 @@ class NextSmsChannel
      *
      * @param mixed $notifiable
      * @param \Illuminate\Notifications\Notification $notification
-     *
-     * @throws \NotificationChannels\NextSms\Exceptions\CouldNotSendNotification
+     * @throws CouldNotSendNotification
      */
     public function send($notifiable, Notification $notification)
     {
-        //$response = [a call to the api of your notification send]
+        $message = $notification->toNextSms($notifiable);
 
-//        if ($response->error) { // replace this by the code need to check for errors
-//            throw CouldNotSendNotification::serviceRespondedWithAnError($response);
-//        }
+        if (! $phoneNumber = $notifiable->routeNotificationFor('nextsms')) {
+            $phoneNumber = $notifiable->phone_number;
+        }
+
+        try {
+            $this->nextsms->singleDestination([
+                'to' => $phoneNumber,
+                'message' => $message->getContent(),
+                'from' => $message->getSender(),
+            ]);
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+            throw CouldNotSendNotification::serviceRespondedWithAnError($e->getMessage());
+        } catch (Exception $e) {
+            throw CouldNotSendNotification::serviceRespondedWithAnError($e->getMessage());
+        }
     }
 }

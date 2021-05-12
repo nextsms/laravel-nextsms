@@ -2,10 +2,16 @@
 
 namespace NotificationChannels\NextSms\Exceptions;
 
-class CouldNotSendNotification extends \Exception
+use Exception;
+
+class CouldNotSendNotification extends Exception
 {
-    public static function serviceRespondedWithAnError($response)
+    /**
+     * @param string $error
+     * @return CouldNotSendNotification
+     */
+    public static function serviceRespondedWithAnError(string $error): self
     {
-        return new static("Descriptive error message.");
+        return new static("NextSms service responded with an error: {$error}");
     }
 }
