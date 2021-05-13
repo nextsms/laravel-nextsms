@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5735d3bea559a966e0178c52a8e22551",
+    "content-hash": "f98c15edc75c7be7a197ab0671ddc061",
     "packages": [
         {
             "name": "brick/math",
@@ -1276,16 +1276,16 @@
         },
         {
             "name": "nextsms/php-client",
-            "version": "v0.0.2",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextsms/php-client.git",
-                "reference": "c489f700de1c3274e1662cb1686d2837a9421494"
+                "reference": "ea6b821175263de52e6c5b335ff711e96e64a776"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextsms/php-client/zipball/c489f700de1c3274e1662cb1686d2837a9421494",
-                "reference": "c489f700de1c3274e1662cb1686d2837a9421494",
+                "url": "https://api.github.com/repos/nextsms/php-client/zipball/ea6b821175263de52e6c5b335ff711e96e64a776",
+                "reference": "ea6b821175263de52e6c5b335ff711e96e64a776",
                 "shasum": ""
             },
             "require": {
@@ -1296,6 +1296,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^7.0|^9.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1322,9 +1323,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nextsms/php-client/issues",
-                "source": "https://github.com/nextsms/php-client/tree/v0.0.2"
+                "source": "https://github.com/nextsms/php-client/tree/v0.0.3"
             },
-            "time": "2021-05-10T23:55:14+00:00"
+            "time": "2021-05-13T14:40:42+00:00"
         },
         {
             "name": "opis/closure",
@@ -7393,7 +7394,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nextsms/php-client": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -24,5 +24,5 @@ return [
      * Enviroment from NextSMS
      *
      */
-    'enviroment' => env('NEXTSMS_ENVIROMENT'),
+    'environment' => env('NEXTSMS_ENVIRONMENT'),
 ];
