@@ -39,10 +39,10 @@ You will need to [Register](https://nextsms.co.tz/register/).
 > Remember to add your Sender ID that you will be using to send the messages.
 
 ```bash
-AFRICASTALKING_USERNAME=""
-AFRICASTALKING_PASSWORD=""
-AFRICASTALKING_FROM=""
-AFRICASTALKING_ENVIROMENT="production"
+NEXTSMS_USERNAME=""
+NEXTSMS_PASSWORD=""
+NEXTSMS_FROM=""
+NEXTSMS_ENVIROMENT="production"
 ```
 
 You can publish the package configuration file:
@@ -137,4 +137,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 ## How do I say Thank you?
 
-Leave a ⭐ star and follow me on [Twitter](https://twitter.com/alphaolomi) .
+Leave a <iframe src="https://ghbtns.com/github-btn.html?user=nextsms&repo=laravel-nextsms&type=star&count=true" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe> star and follow me on [Twitter](https://twitter.com/alphaolomi) .
