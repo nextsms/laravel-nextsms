@@ -8,6 +8,6 @@ class InvalidConfiguration extends Exception
 {
     public static function configurationNotSet(): self
     {
-        return new static('To send notifications via NextSms you need to add credentials in the `nextsms` key of `config.services`.');
+        return new static('To send notifications via NextSMS you need to add credentials in the `nextsms` configs.');
     }
 }

@@ -1,6 +1,12 @@
 {
     "name": "nextsms/laravel",
-    "description": "Laravel Integration to NextSMS",
+    "description": "This package makes it easy to send notifications via NextSMS with Laravel ",
+    "keywords": [
+        "nextsms",
+        "laravel",
+        "notification",
+        "notification-channel"
+    ],
     "homepage": "https://github.com/nextsms/laravel",
     "license": "MIT",
     "authors": [
@@ -19,7 +25,8 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.4",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "~5.0 || ~6.0"
     },
     "autoload": {
         "psr-4": {
@@ -32,10 +39,17 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
+        "test": "vendor/bin/phpunit",
         "test:coverage": "phpunit --coverage-text --coverage-clover=coverage.clover"
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NotificationChannels\\NextSms\\NextSmsServiceProvider"
+            ]
+        }
     }
 }

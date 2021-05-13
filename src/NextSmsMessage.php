@@ -5,16 +5,13 @@ namespace NotificationChannels\NextSms;
 class NextSmsMessage
 {
     /** @var string */
-    protected string $content;
+    protected $content;
 
     /** @var string|null */
-    protected ?string $from;
+    protected $from;
 
     /**
      * Set content for this message.
-     *
-     * @param string $content
-     * @return NextSmsMessage
      */
     public function content(string $content): self
     {
@@ -25,9 +22,6 @@ class NextSmsMessage
 
     /**
      * Set sender for this message.
-     *
-     * @param string $from
-     * @return self
      */
     public function from(string $from): self
     {
@@ -41,7 +35,7 @@ class NextSmsMessage
      *
      * @return string
      */
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
@@ -51,8 +45,8 @@ class NextSmsMessage
      *
      * @return string
      */
-    public function getSender(): string
+    public function getSender()
     {
-        return $this->from ?? config('services.nextsms.from');
+        return $this->from ?? config('nextsms.from');
     }
 }
