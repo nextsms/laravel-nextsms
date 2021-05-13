@@ -2,9 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/nextsms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/nextsms)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![StyleCI](https://styleci.io/repos/247548130/shield)](https://styleci.io/repos/209406724)
 [![PHPUnit tests](https://github.com/nextsms/laravel-nextsms/actions/workflows/tests.yml/badge.svg)](https://github.com/nextsms/laravel-nextsms/actions/workflows/tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/nextsms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/nextsms)
 
 This package makes it easy to send notifications using [NextSMS](https://nextsms.co.tz/) with Laravel.
 
