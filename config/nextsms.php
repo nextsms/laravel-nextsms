@@ -2,7 +2,6 @@
 
 return [
 
-
     /*
      * Username from NextSMS
      *
@@ -13,7 +12,7 @@ return [
      * Password from NextSMS
      *
      */
-    'key' => env('NEXTSMS_PASSWORD'),
+    'password' => env('NEXTSMS_PASSWORD'),
 
     /*
      * Shortcode for sending SMS from NextSMS

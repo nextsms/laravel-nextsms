@@ -1,6 +1,6 @@
 # NextSMS notification channel for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/nextsms/laravel.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/nextsms)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/nextsms/laravel.svg?style=flat-square)](https://packagist.org/packages/nextsms/laravel)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![PHPUnit tests](https://github.com/nextsms/laravel-nextsms/actions/workflows/tests.yml/badge.svg)](https://github.com/nextsms/laravel-nextsms/actions/workflows/tests.yml)
 
@@ -20,7 +20,7 @@ This package makes it easy to send notifications using [NextSMS](https://nextsms
 
 ## About
 
-The NextSMS channel makes it possible to send out Laravel notifications as a `SMS` using NextSMS API.
+The NextSMS channel makes it possible to send out Laravel notifications as `SMS` using NextSMS API.
 
 ## Installation
 
@@ -48,10 +48,10 @@ NEXTSMS_ENVIROMENT="production"
 You can publish the package configuration file:
 
 ```bash
-php artisan vendor:publish --provider="NotificationChannels\NextSMS\NextSmsServiceProvider" --tag="config"
+php artisan vendor:publish --provider="NotificationChannels\NextSms\NextSmsServiceProvider" --tag="config"
 ```
 
-Add the `routeNotifcationForNextSMS` method on your notifiable Model. If this is not added,
+Add the `routeNotifcationForNextSms` method on your notifiable Model. If this is not added,
 the `phone_number` field will be automatically used.
 
 ```php
@@ -86,8 +86,8 @@ To use this package, you need to create a notification class, like `NewsWasPubli
 ```php
 <?php
 
-use NotificationChannels\NextSMS\NextSmsChannel;
-use NotificationChannels\NextSMS\NextSmsMessage;
+use NotificationChannels\NextSms\NextSmsChannel;
+use NotificationChannels\NextSms\NextSmsMessage;
 
 class NewsWasPublished extends Notification
 {
@@ -100,10 +100,10 @@ class NewsWasPublished extends Notification
      */
     public function via($notifiable)
     {
-        return [NextSmdChannel::class];
+        return [NextSmsChannel::class];
     }
 
-    public function toNextSMS($notifiable)
+    public function toNextSms($notifiable)
     {
         return (new NextSmsMessage())
                     ->content('Your SMS message content');
@@ -128,7 +128,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Osaigbovo Emmanuel](https://github.com/alphaolomi)
+- [Alpha Olomi](https://github.com/alphaolomi)
 - [All Contributors](../../contributors)
 
 ## License
@@ -137,4 +137,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 ## How do I say Thank you?
 
-Leave a <iframe src="https://ghbtns.com/github-btn.html?user=nextsms&repo=laravel-nextsms&type=star&count=true" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe> star and follow me on [Twitter](https://twitter.com/alphaolomi) .
+Leave a ⭐ star and follow me on [Twitter](https://twitter.com/alphaolomi) .
