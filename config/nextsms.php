@@ -20,4 +20,10 @@ return [
      *
      */
     'from' => env('NEXTSMS_FROM'),
+
+    /*
+     * Enviroment from NextSMS
+     *
+     */
+    'enviroment' => env('NEXTSMS_ENVIROMENT'),
 ];

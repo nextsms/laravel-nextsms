@@ -27,12 +27,17 @@ class NextSmsServiceProvider extends ServiceProvider
             ->give(function () {
                 $username = config('nextsms.username');
                 $password = config('nextsms.password');
+                $enviroment = config('nextsms.enviroment', 'production');
 
                 if (is_null($username) || is_null($password)) {
                     throw InvalidConfiguration::configurationNotSet();
                 }
 
-                return new NextSmsSDK(['username' => $username, 'password' => $password]);
+                return new NextSmsSDK([
+                    'username' => $username,
+                    'password' => $password,
+                    'enviroment' => $enviroment
+                ]);
             });
     }
 
