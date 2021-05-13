@@ -14,7 +14,7 @@ class NextSmsChannelTest extends TestCase
     /** @var Mockery\Mock */
     protected $nextSms;
 
-    /** @var \NotificationChannels\Twitter\NextSmsChannel */
+    /** @var \NotificationChannels\NextSms\NextSmsChannel */
     protected $channel;
 
     public function setUp(): void
@@ -34,7 +34,7 @@ class NextSmsChannelTest extends TestCase
     /** @test */
     public function itCanSendSmsNotification()
     {
-        $this->nextSms->shouldReceive('send')->once()->andReturn(200);
+        $this->nextSms->shouldReceive('singleDestination')->once()->andReturn(200);
 
         $this->channel->send(new TestNotifiable, new TestNotification);
     }
@@ -49,7 +49,7 @@ class TestNotifiable
      */
     public function routeNotificationForNextSms()
     {
-        return '+2341111111111';
+        return '2551111111111';
     }
 }
 
