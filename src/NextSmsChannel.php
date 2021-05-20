@@ -2,9 +2,9 @@
 
 namespace NotificationChannels\NextSms;
 
-use NextSMS\SDK\NextSMS as NextSmsSDK;
 use Exception;
 use Illuminate\Notifications\Notification;
+use NextSMS\SDK\NextSMS as NextSmsSDK;
 use NotificationChannels\NextSms\Exceptions\CouldNotSendNotification;
 
 class NextSmsChannel
@@ -29,15 +29,15 @@ class NextSmsChannel
     {
         $message = $notification->toNextSms($notifiable);
 
-        if (!$phoneNumber = $notifiable->routeNotificationFor('nextSms')) {
+        if (! $phoneNumber = $notifiable->routeNotificationFor('nextSms')) {
             $phoneNumber = $notifiable->phone_number;
         }
 
         try {
             $this->nextSms->singleDestination([
-                'to'      => $phoneNumber,
+                'to' => $phoneNumber,
                 'text' => $message->getContent(),
-                'from'    => $message->getSender(),
+                'from' => $message->getSender(),
             ]);
         } catch (Exception $e) {
             throw CouldNotSendNotification::serviceRespondedWithAnError($e->getMessage());

@@ -2,8 +2,8 @@
 
 namespace NotificationChannels\NextSms;
 
-use NextSMS\SDK\NextSMS as NextSmsSDK;
 use Illuminate\Support\ServiceProvider;
+use NextSMS\SDK\NextSMS as NextSmsSDK;
 use NotificationChannels\NextSms\Exceptions\InvalidConfiguration;
 
 class NextSmsServiceProvider extends ServiceProvider
@@ -36,7 +36,7 @@ class NextSmsServiceProvider extends ServiceProvider
                 return new NextSmsSDK([
                     'username' => $username,
                     'password' => $password,
-                    'environment' => $environment
+                    'environment' => $environment,
                 ]);
             });
     }
