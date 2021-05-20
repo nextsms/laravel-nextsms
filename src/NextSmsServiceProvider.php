@@ -25,19 +25,7 @@ class NextSmsServiceProvider extends ServiceProvider
         $this->app->when(NextSmsChannel::class)
             ->needs(NextSmsSDK::class)
             ->give(function () {
-                $username = config('nextsms.username');
-                $password = config('nextsms.password');
-                $environment = config('nextsms.environment', 'production');
-
-                if (is_null($username) || is_null($password)) {
-                    throw InvalidConfiguration::configurationNotSet();
-                }
-
-                return new NextSmsSDK([
-                    'username' => $username,
-                    'password' => $password,
-                    'environment' => $environment
-                ]);
+                return $this->makeNextSmsService();
             });
     }
 
@@ -46,7 +34,31 @@ class NextSmsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind('nextsmsservice', function ($app) {
+            return $this->makeNextSmsService();
+        });
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/nextsms.php', 'nextsms');
+    }
+
+    /**
+     * @return NextSmsSDK
+     * @throws InvalidConfiguration
+     */
+    public function makeNextSmsService(): NextSmsSDK
+    {
+        $username = config('nextsms.username');
+        $password = config('nextsms.password');
+        $environment = config('nextsms.environment', 'production');
+
+        if (is_null($username) || is_null($password)) {
+            throw InvalidConfiguration::configurationNotSet();
+        }
+
+        return new NextSmsSDK([
+            'username' => $username,
+            'password' => $password,
+            'environment' => $environment
+        ]);
     }
 }
