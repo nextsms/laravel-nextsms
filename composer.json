@@ -49,7 +49,10 @@
         "laravel": {
             "providers": [
                 "NotificationChannels\\NextSms\\NextSmsServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "NextSmsService": "NotificationChannels\\NextSms\\NextSmsFacade"
+            }
         }
     }
 }
