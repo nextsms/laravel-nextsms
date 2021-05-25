@@ -26,7 +26,8 @@
     "require-dev": {
         "mockery/mockery": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "orchestra/testbench": "~5.0 || ~6.0"
+        "orchestra/testbench": "~5.0 || ~6.0",
+        "vimeo/psalm": "^4.4"
     },
     "autoload": {
         "psr-4": {
@@ -39,6 +40,7 @@
         }
     },
     "scripts": {
+        "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/phpunit",
         "test:coverage": "phpunit --coverage-text --coverage-clover=coverage.clover"
     },

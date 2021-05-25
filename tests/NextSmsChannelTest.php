@@ -2,12 +2,12 @@
 
 namespace NotificationChannels\NextSms\Test;
 
-use NextSMS\SDK\NextSMS as NextSmsSDK;
 use Illuminate\Notifications\Notification;
 use Mockery;
+use NextSMS\SDK\NextSMS as NextSmsSDK;
+use NotificationChannels\NextSms\Exceptions\CouldNotSendNotification;
 use NotificationChannels\NextSms\NextSmsChannel;
 use NotificationChannels\NextSms\NextSmsMessage;
-use NotificationChannels\NextSms\Exceptions\CouldNotSendNotification;
 
 class NextSmsChannelTest extends TestCase
 {
