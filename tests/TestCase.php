@@ -5,7 +5,6 @@ namespace NotificationChannels\NextSms\Test;
 use Mockery;
 use NotificationChannels\NextSms\NextSmsServiceProvider;
 
-
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**

@@ -58,7 +58,7 @@ class NextSmsServiceProvider extends ServiceProvider
         return new NextSmsSDK([
             'username' => $username,
             'password' => $password,
-            'environment' => $environment
+            'environment' => $environment,
         ]);
     }
 }
