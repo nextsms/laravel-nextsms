@@ -9,6 +9,7 @@ This package makes it easy to send notifications using [NextSMS](https://nextsms
 ## Contents
 
 - [About](#about)
+- [Laravel compatibly](#laravel-compatibly)
 - [Installation](#installation)
 - [Setting up the NextSMS service](#setting-up-the-nextsms-service)
 - [Usage](#usage)
@@ -22,12 +23,31 @@ This package makes it easy to send notifications using [NextSMS](https://nextsms
 
 The NextSMS channel makes it possible to send out Laravel notifications as `SMS` using NextSMS API.
 
+## Laravel compatibly
+
+Package is Laravel v8 compatible
+
+| Laravel Version | Package Version | Notes          |
+| --------------- | --------------- | -------------- |
+| v7 or v8        | dev-main        | Latest version |
+| v6              | 6.0.x-dev       |                |
+| v5              | 5.x-dev         |                |
+
+
 ## Installation
 
 You can install this package via composer:
 
+This will install the latest version
 ```bash
 composer require nextsms/laravel
+```
+
+To install previous version of the package eg: version 6.0.x-dev compatible with laravel v6
+see 
+
+```bash
+composer require nextsms/laravel:6.0.x-dev
 ```
 
 The service provider gets loaded automatically.
@@ -110,6 +130,26 @@ class NewsWasPublished extends Notification
 
     }
 }
+```
+
+
+## Alternative usage
+
+This packages comes with a Facade portating the `NextSmsService` this is usefull of you onyl want to send SMS without dealing the the Laravel Notification system
+
+See full list of [API avaliable](https://github.com/nextsms/php-client#api-available)
+
+```php
+// import this 
+
+use NotificationChannels\NextSms\NextSmsFacade as NextSms;
+
+// in your controller
+NextSms::singleDestination([
+    'from' => 'NEXTSMS',
+    'to' => '255716718040',
+    'text' => 'Your message'
+]);
 ```
 
 ## Testing
